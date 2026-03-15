@@ -22,7 +22,12 @@ let cxxCipherSettings: [CXXSetting] = [
     .define("SQLITE_ENABLE_FTS5"),
     .define("SQLCIPHER_CRYPTO_CC"),
     .define("HAVE_USLEEP", to: "1"),
-    .define("SQLITE_MAX_VARIABLE_NUMBER", to: "99999")
+    .define("SQLITE_MAX_VARIABLE_NUMBER", to: "99999"),
+    // Issue #812 / CVA22h-001: NDEBUG disables assert() in SQLite amalgamation.
+    // Required because SQLITE_DEBUG was removed (CVA22h-002); without NDEBUG,
+    // assert() calls referencing SQLITE_DEBUG-only internal functions cause
+    // undeclared-function compile errors in C99+ strict mode.
+    .define("NDEBUG")
 ]
 
 let package = Package(
