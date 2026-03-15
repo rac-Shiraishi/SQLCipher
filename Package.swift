@@ -14,7 +14,6 @@ let cxxCipherSettings: [CXXSetting] = [
     .define("SQLITE_ENABLE_STAT4"),
     .define("SQLITE_ENABLE_COLUMN_METADATA"),
     .define("SQLITE_ENABLE_MEMORY_MANAGEMENT"),
-    .define("SQLITE_ENABLE_LOAD_EXTENSION"),
     .define("SQLITE_ENABLE_FTS4"),
     .define("SQLITE_ENABLE_FTS4_UNICODE61"),
     .define("SQLITE_ENABLE_FTS3_PARENTHESIS"),
@@ -23,8 +22,7 @@ let cxxCipherSettings: [CXXSetting] = [
     .define("SQLITE_ENABLE_FTS5"),
     .define("SQLCIPHER_CRYPTO_CC"),
     .define("HAVE_USLEEP", to: "1"),
-    .define("SQLITE_MAX_VARIABLE_NUMBER", to: "99999"),
-    .define("SQLITE_DEBUG")
+    .define("SQLITE_MAX_VARIABLE_NUMBER", to: "99999")
 ]
 
 let package = Package(
