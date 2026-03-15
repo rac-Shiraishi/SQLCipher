@@ -23,6 +23,9 @@ let cxxCipherSettings: [CXXSetting] = [
     .define("SQLCIPHER_CRYPTO_CC"),
     .define("HAVE_USLEEP", to: "1"),
     .define("SQLITE_MAX_VARIABLE_NUMBER", to: "99999"),
+    // SQLCipher crypto init/shutdown hooks (required by sqlcipher amalgamation)
+    .define("SQLITE_EXTRA_INIT", to: "sqlcipher_extra_init"),
+    .define("SQLITE_EXTRA_SHUTDOWN", to: "sqlcipher_extra_shutdown"),
     // Issue #812 / CVA22h-001: NDEBUG disables assert() in SQLite amalgamation.
     // Required because SQLITE_DEBUG was removed (CVA22h-002); without NDEBUG,
     // assert() calls referencing SQLITE_DEBUG-only internal functions cause
